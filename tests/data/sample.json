@@ -1,0 +1,8 @@
+{
+    "name": "kak-rainbow-rs",
+    "nested": {
+        "list": [1, 2, [3, 4], {"deep": [5]}],
+        "text": "brackets in strings ( are ] matched raw { by the generic parser"
+    },
+    "mixed": [{"a": [{"b": 1}]}]
+}

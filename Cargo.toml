@@ -1,0 +1,13 @@
+[package]
+name = "kak-rainbow-rs"
+version = "0.1.0"
+edition = "2021"
+# tests use std::iter::repeat_n (stabilized 1.82)
+rust-version = "1.82"
+license = "MIT"
+description = "Rainbow bracket highlighting tokenizer for Kakoune (Rust port of kak-rainbower)"
+
+[dependencies]
+
+[profile.release]
+lto = true
