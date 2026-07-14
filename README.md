@@ -7,9 +7,9 @@ C++/Rust) while skipping strings, comments, and disabled `#if 0` regions,
 then emits Kakoune range-specs. Runs on every relevant idle, so it is
 allocation-light, O(n), and never panics.
 
-![demo](demo.gif)
+![demo](demo/demo.gif)
 
-Regenerate with [vhs](https://github.com/charmbracelet/vhs): `vhs demo.tape`.
+Regenerate with [vhs](https://github.com/charmbracelet/vhs): `cd demo && vhs demo.tape`.
 
 ## Installation
 

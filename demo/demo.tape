@@ -1,10 +1,9 @@
-# demo.tape — regenerate demo.gif with `vhs demo.tape` from the repo root.
+# demo.tape — build first, then regenerate: cd demo && vhs demo.tape
 # https://github.com/charmbracelet/vhs
 
 Output demo.gif
 
 Require kak
-Require cargo
 
 Set Shell bash
 # Catppuccin Mocha's ANSI palette on a black background, so the scope
@@ -17,12 +16,10 @@ Set Padding 10
 Set Framerate 20
 Set TypingSpeed 55ms
 
-# Setup (not recorded): build the tokenizer and point kak at a throwaway
-# config that sources this plugin and nothing else, so the demo does not
-# depend on anyone's kakrc.
+# Setup (not recorded): point kak at a throwaway config that sources this
+# plugin and nothing else, so the demo does not depend on anyone's kakrc.
 Hide
-Type 'cargo build --release' Enter
-Wait@180s
+Type 'cd ..' Enter
 Type 'export XDG_CONFIG_HOME=$(mktemp -d) && mkdir -p $XDG_CONFIG_HOME/kak' Enter
 Type 'echo "set-option global startup_info_version 99999999" > $XDG_CONFIG_HOME/kak/kakrc' Enter
 Type 'echo "source $PWD/rc/rainbow.kak" >> $XDG_CONFIG_HOME/kak/kakrc' Enter
