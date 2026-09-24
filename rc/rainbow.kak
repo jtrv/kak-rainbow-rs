@@ -80,7 +80,7 @@ define-command -hidden rainbow-view %{
             set-option window rainbow_window_range %val{window_range}
             execute-keys -save-regs _ ' ;Z<ret>' # save original main selection in ^ reg
             evaluate-commands -save-regs '|' %{
-                execute-keys -draft '%<a-|>caret=$(echo $kak_reg_caret | cut -d" " -f2); set -- $kak_opt_rainbow_window_range; "$kak_opt_rainbow_rs_bin" "${kak_buffile}" "${kak_timestamp}" "${kak_opt_rainbow_mode}" "$caret" "$1.$2" "$3.$4" "$kak_opt_filetype" "$kak_opt_rainbow_check_templates" "$kak_opt_rainbow_check_pound_ifs" $kak_opt_rainbow_colors ! $kak_opt_background_rainbow_colors ! "$kak_opt_rainbow_cursor_scope_color" | kak -p "${kak_session}" &<ret>'
+                execute-keys -draft '%<a-|>exec 3<lt>&0; caret=$(echo $kak_reg_caret | cut -d" " -f2); set -- $kak_opt_rainbow_window_range; "$kak_opt_rainbow_rs_bin" "${kak_buffile}" "${kak_timestamp}" "${kak_opt_rainbow_mode}" "$caret" "$1.$2" "$3.$4" "$kak_opt_filetype" "$kak_opt_rainbow_check_templates" "$kak_opt_rainbow_check_pound_ifs" $kak_opt_rainbow_colors ! $kak_opt_background_rainbow_colors ! "$kak_opt_rainbow_cursor_scope_color" <lt>&3 | kak -p "${kak_session}" &<ret>'
             }
         }
     }
@@ -92,7 +92,7 @@ define-command -hidden rainbow-full-view %{
         try %{
             execute-keys -save-regs _ ' ;Z<ret>' # save original main selection in ^ reg
             evaluate-commands -save-regs '|' %{
-                execute-keys -draft '%<a-|>caret=$(echo $kak_reg_caret | cut -d" " -f2); "$kak_opt_rainbow_rs_bin" "${kak_buffile}" "${kak_timestamp}" "${kak_opt_rainbow_mode}" "$caret" 0.0 9999999.9999999 "$kak_opt_filetype" "$kak_opt_rainbow_check_templates" "$kak_opt_rainbow_check_pound_ifs" $kak_opt_rainbow_colors ! $kak_opt_background_rainbow_colors ! "$kak_opt_rainbow_cursor_scope_color" | kak -p "${kak_session}" &<ret>'
+                execute-keys -draft '%<a-|>exec 3<lt>&0; caret=$(echo $kak_reg_caret | cut -d" " -f2); "$kak_opt_rainbow_rs_bin" "${kak_buffile}" "${kak_timestamp}" "${kak_opt_rainbow_mode}" "$caret" 0.0 9999999.9999999 "$kak_opt_filetype" "$kak_opt_rainbow_check_templates" "$kak_opt_rainbow_check_pound_ifs" $kak_opt_rainbow_colors ! $kak_opt_background_rainbow_colors ! "$kak_opt_rainbow_cursor_scope_color" <lt>&3 | kak -p "${kak_session}" &<ret>'
             }
         }
     }
